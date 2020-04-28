@@ -10,7 +10,7 @@ export default class CalendarsScreen extends Component {
     super(props);
     
     this.state = {
-      selected: undefined
+      selected: '2020-04-25'
     };
   }
 
@@ -24,19 +24,21 @@ export default class CalendarsScreen extends Component {
         <Text style={styles.text}>Calendar with selectable date</Text>
         <Calendar
           testID={testIDs.calendars.FIRST}
-          current={'2020-04-19'}
+          current={this.state.selected}
           style={styles.calendar}
           hideExtraDays
           onDayPress={this.onDayPress}
           markedDates={{
             [this.state.selected]: {
-              selected: true, 
-              disableTouchEvent: true, 
-              selectedDotColor: 'orange'
+              selected: true 
             }
           }}
           minDate={'2020-04-19'}
           maxDate={'2020-05-19'}
+          disableMonthChange={true}
+          theme={{
+            todayTextColor: '#000'
+          }}
         />
 
         {/* <Text style={styles.text}>Calendar with week numbers</Text>

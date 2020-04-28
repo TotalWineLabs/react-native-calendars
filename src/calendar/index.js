@@ -161,6 +161,8 @@ class Calendar extends Component {
   renderDay(day, id) {
     const minDate = parseDate(this.props.minDate);
     const maxDate = parseDate(this.props.maxDate);
+    const marking = this.getDateMarking(day);
+
     let state = '';
     if (this.props.disabledByDefault) {
       state = 'disabled';
@@ -179,10 +181,14 @@ class Calendar extends Component {
     const DayComp = this.getDayComponent();
     const date = day.getDate();
     const dateAsObject = xdateToData(day);
-    const accessibilityLabel = `${state === 'today' ? 'today' : ''} ${day.toString('dddd MMMM d')} ${this.getMarkingLabel(day)}`;
+    const accessibilityLabel = `${marking && marking.selected ? 'Selected,' : ''} ${day.toString('dddd MMMM d')}`;
 
     return (
-      <View style={{flex: 1, alignItems: 'center'}} key={id}>
+      <View 
+        style={{flex: 1, alignItems: 'center'}} key={id}
+        accessibilityElementsHidden={state === 'disabled'} // iOS
+        importantForAccessibility={state === 'disabled' ? 'no-hide-descendants' : ''}
+      >
         <DayComp
           testID={`${SELECT_DATE_SLOT}-${dateAsObject.dateString}`}
           state={state}
@@ -190,42 +196,13 @@ class Calendar extends Component {
           onPress={this.pressDay}
           onLongPress={this.longPressDay}
           date={dateAsObject}
-          marking={this.getDateMarking(day)}
+          marking={marking}
           accessibilityLabel={accessibilityLabel}
         >
           {date}
         </DayComp>
       </View>
     );
-  }
-
-  getMarkingLabel(day) {
-    let label = '';
-    const marking = this.getDateMarking(day);
-    
-    if (marking.accessibilityLabel) {
-      return marking.accessibilityLabel;
-    }
-    
-    if (marking.selected) {
-      label += 'selected ';
-      if (!marking.marked) {
-        label += 'You have no entries for this day ';
-      }
-    } 
-    if (marking.marked) {
-      label += 'You have entries for this day ';
-    } 
-    if (marking.startingDay) {
-      label += 'period start ';
-    } 
-    if (marking.endingDay) {
-      label += 'period end ';
-    }
-    if (marking.disabled || marking.disableTouchEvent) {
-      label += 'disabled ';
-    }
-    return label;
   }
 
   getDayComponent() {
