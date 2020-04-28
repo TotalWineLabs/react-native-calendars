@@ -1,12 +1,4 @@
-**LOOKING FOR A MAINTAINER**
-We love this project, but currently we don’t have enough time to work on it. So we are looking for a maintainer. If you have enough time and knowledge and want to become one - please let us know (levv@wix.com, inbalti@wix.com, ethans@wix.com)
-
----
-
-
-# React Native Calendars 🗓️ 📆
-[![Version](https://img.shields.io/npm/v/react-native-calendars.svg)](https://www.npmjs.com/package/react-native-calendars)
-[![Build Status](https://travis-ci.org/wix/react-native-calendars.svg?branch=master)](https://travis-ci.org/wix/react-native-calendars)
+# TWM React Native Calendars 🗓️ 📆
 
 This module includes various customizable **React-Native** calendar components.
 
@@ -17,19 +9,16 @@ The package is both **Android** and **iOS** compatible.
 You can run example module by performing these steps:
 
 ```
-$ git clone git@github.com:wix/react-native-calendars.git
-$ npm install
-$ react-native run-ios
+$ git clone https://github.com/TotalWineLabs/react-native-calendars
+$ yarn
+$ cd ios && pod install
+$ yarn ios
 ```
-
-You can check example screens source code in [example module screens](https://github.com/wix-private/wix-react-native-calendar/tree/master/example/src/screens)
-
-This project is compatible with Expo/CRNA (without ejecting), and the examples have been [published on Expo](https://expo.io/@community/react-native-calendars-example)
 
 ## Installation
 
 ```
-$ npm install --save react-native-calendars
+$ yarn add react-native-calendars
 ```
 
 The solution is implemented in JavaScript so no native module linking is required.
@@ -42,7 +31,7 @@ All parameters for components are optional. By default the month of current loca
 
 Event handler callbacks are called with `calendar objects` like this:
 
-```javasctipt
+```javascript
 {
   day: 1,      // day of month (1-31)
   month: 1,    // month of year (1-12)

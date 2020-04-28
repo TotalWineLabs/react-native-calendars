@@ -24,7 +24,7 @@ export default class CalendarsScreen extends Component {
         <Text style={styles.text}>Calendar with selectable date</Text>
         <Calendar
           testID={testIDs.calendars.FIRST}
-          current={'2020-02-02'}
+          current={'2020-04-19'}
           style={styles.calendar}
           hideExtraDays
           onDayPress={this.onDayPress}
@@ -35,9 +35,11 @@ export default class CalendarsScreen extends Component {
               selectedDotColor: 'orange'
             }
           }}
+          minDate={'2020-04-19'}
+          maxDate={'2020-05-19'}
         />
 
-        <Text style={styles.text}>Calendar with week numbers</Text>
+        {/* <Text style={styles.text}>Calendar with week numbers</Text>
         <Calendar
           style={styles.calendar}
           hideExtraDays
@@ -265,7 +267,7 @@ export default class CalendarsScreen extends Component {
               </View>
             );
           }}
-        />
+        /> */}
       </ScrollView>
     );
   }
