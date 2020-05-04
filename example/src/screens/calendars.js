@@ -4,23 +4,24 @@ import {Calendar} from 'react-native-calendars';
 
 const testIDs = require('../testIDs');
 
-
 export default class CalendarsScreen extends Component {
   constructor(props) {
     super(props);
-    
+
     this.state = {
-      selected: '2020-04-25'
+      selected: '2020-04-25',
     };
   }
 
   onDayPress = (day) => {
     this.setState({selected: day.dateString});
-  }
+  };
 
   render() {
     return (
-      <ScrollView showsVerticalScrollIndicator={false} testID={testIDs.calendars.CONTAINER}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        testID={testIDs.calendars.CONTAINER}>
         <Text style={styles.text}>Calendar with selectable date</Text>
         <Calendar
           testID={testIDs.calendars.FIRST}
@@ -30,14 +31,14 @@ export default class CalendarsScreen extends Component {
           onDayPress={this.onDayPress}
           markedDates={{
             [this.state.selected]: {
-              selected: true 
-            }
+              selected: true,
+            },
           }}
           minDate={'2020-04-19'}
           maxDate={'2020-05-19'}
           disableMonthChange={true}
           theme={{
-            todayTextColor: '#000'
+            todayTextColor: '#000',
           }}
         />
 
@@ -277,12 +278,12 @@ export default class CalendarsScreen extends Component {
 
 const styles = StyleSheet.create({
   calendar: {
-    marginBottom: 10
+    marginBottom: 10,
   },
   text: {
     textAlign: 'center',
     padding: 10,
     backgroundColor: 'lightgrey',
-    fontSize: 16
-  }
+    fontSize: 16,
+  },
 });
